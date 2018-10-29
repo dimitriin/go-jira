@@ -66,11 +66,11 @@ func (o *GlobalOptions) GetPass() string {
 		return passwd
 	}
 
-	if passwd = os.Getenv("JIRA_PASSWORD") ; passwd != "" {
+	if passwd = os.Getenv("JIRA_API_TOKEN"); passwd != "" && o.AuthMethod() == "api-token" {
 		return passwd
 	}
 
-	if passwd = os.Getenv("JIRA_API_TOKEN"); passwd != "" && o.AuthMethod() == "api-token" {
+	if passwd = os.Getenv("JIRA_PASSWORD") ; passwd != "" {
 		return passwd
 	}
 
